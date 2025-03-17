@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nestjs-load-test-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nestjs-load-test
+  template:
+    metadata:
+      labels:
+        app: nestjs-load-test
+    spec:
+      containers:
+        - name: nestjs-load-test
+          image: nestjs-load-test:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3000

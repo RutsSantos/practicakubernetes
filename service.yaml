@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nestjs-load-test-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: nestjs-load-test
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
+      name: http
